@@ -1,0 +1,88 @@
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #eef3ff, #fff6f1);
+    color: #1f2937;
+}
+.page {
+    width: min(940px, calc(100% - 32px));
+    margin: 48px auto;
+}
+.card {
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(31,41,55,0.08);
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow: 0 20px 70px rgba(31,41,55,0.12);
+    margin-bottom: 22px;
+}
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 34px;
+    align-items: center;
+}
+h1 { margin: 10px 0 12px; font-size: 36px; }
+h2 { margin-top: 0; }
+.muted { color: #6b7280; line-height: 1.6; }
+.badge {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #3730a3;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .03em;
+}
+.payment-form { display: grid; gap: 12px; }
+label { font-weight: 700; }
+input {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    font-size: 16px;
+}
+button, .back {
+    display: inline-block;
+    border: 0;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 8px;
+}
+button:hover, .back:hover { filter: brightness(0.95); }
+.error { color: #dc2626; margin: 0; }
+ul { line-height: 1.9; }
+code { background: #f3f4f6; padding: 3px 6px; border-radius: 6px; }
+.result-card.success { border-color: #86efac; }
+.result-card.failed { border-color: #fca5a5; }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 22px 0;
+    overflow: hidden;
+    border-radius: 14px;
+}
+th, td {
+    border: 1px solid #e5e7eb;
+    padding: 13px;
+    text-align: left;
+    vertical-align: top;
+    word-break: break-word;
+}
+th { width: 240px; background: #f9fafb; }
+details { margin: 18px 0; }
+summary { cursor: pointer; font-weight: 700; }
+.raw-table th { width: 260px; }
+@media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; }
+    h1 { font-size: 28px; }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo thanh toán VNPAY</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="page">
+    <section class="card hero">
+        <div>
+            <p class="badge">Spring Boot + VNPAY Sandbox</p>
+            <h1>Thanh toán đơn hàng demo</h1>
+            <p class="muted">Nhập số tiền, bấm thanh toán và hệ thống sẽ chuyển hướng sang cổng sandbox của VNPAY.</p>
+        </div>
+
+        <form th:action="@{/payment/create}" th:object="${paymentRequest}" method="post" class="payment-form">
+            <label for="amount">Số tiền thanh toán (VND)</label>
+            <input id="amount" type="number" min="1000" step="1000" th:field="*{amount}" required>
+            <p class="error" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></p>
+
+            <label for="orderInfo">Nội dung thanh toán</label>
+            <input id="orderInfo" type="text" th:field="*{orderInfo}" placeholder="Thanh toán đơn hàng demo">
+
+            <button type="submit">Thanh toán qua VNPAY</button>
+        </form>
+    </section>
+
+    <section class="card note">
+        <h2>Checklist demo</h2>
+        <ul>
+            <li>Tạo Payment URL có chữ ký HMAC SHA512.</li>
+            <li>Redirect sang VNPAY sandbox.</li>
+            <li>Return về website và hiển thị dữ liệu giao dịch.</li>
+            <li>Có endpoint IPN/Webhook: <code>/payment/vnpay-ipn</code>.</li>
+        </ul>
+    </section>
+</div>
+</body>
+</html>

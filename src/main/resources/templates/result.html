@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả thanh toán</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="page">
+    <section class="card result-card" th:classappend="${success} ? 'success' : 'failed'">
+        <p class="badge" th:text="${success} ? 'PAYMENT SUCCESS' : 'PAYMENT FAILED'"></p>
+        <h1 th:text="${message}">Kết quả giao dịch</h1>
+        <p class="muted">Dữ liệu dưới đây là các tham số VNPAY trả về sau khi thanh toán.</p>
+
+        <table>
+            <tbody>
+            <tr th:each="item : ${paymentData}">
+                <th th:text="${item.key}">Tên dữ liệu</th>
+                <td th:text="${item.value}">Giá trị</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <details>
+            <summary>Xem toàn bộ dữ liệu raw VNPAY trả về</summary>
+            <table class="raw-table">
+                <tbody>
+                <tr th:each="item : ${rawData}">
+                    <th th:text="${item.key}"></th>
+                    <td th:text="${item.value}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </details>
+
+        <a class="back" th:href="@{/}">Quay lại trang chủ</a>
+    </section>
+</div>
+</body>
+</html>
