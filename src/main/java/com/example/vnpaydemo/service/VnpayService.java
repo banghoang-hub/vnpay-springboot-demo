@@ -42,6 +42,9 @@ public class VnpayService {
         params.put("vnp_ExpireDate", now.plusMinutes(15).format(VNPAY_DATE_FORMAT));
 
         String hashData = VnpayUtil.buildHashData(params);
+//        System.out.println("TMN = [" + props.getTmnCode() + "]");
+//        System.out.println("HASH SECRET LENGTH = " + props.getHashSecret().length());
+        System.out.println("HASH DATA = " + hashData);
         String secureHash = VnpayUtil.hmacSHA512(props.getHashSecret(), hashData);
         params.put("vnp_SecureHash", secureHash);
 
